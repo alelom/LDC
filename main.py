@@ -320,7 +320,7 @@ def parse_args():
                         metavar='B',
                         help='the mini-batch size (default: 8)')
     parser.add_argument('--workers',
-                        default=8,
+                        default=1,
                         type=int,
                         help='The number of workers for the dataloaders.')
     parser.add_argument('--tensorboard',type=bool,
@@ -365,6 +365,7 @@ def main(args):
     tb_writer = None
     training_dir = os.path.join(args.output_dir,args.train_data)
     os.makedirs(training_dir,exist_ok=True)
+    args.checkpoint_data = args.checkpoint_data.replace('/', os.sep)
     checkpoint_path = os.path.join(args.output_dir, args.train_data,args.checkpoint_data)
     if args.tensorboard and not args.is_testing:
         # from tensorboardX import SummaryWriter  # previous torch version
