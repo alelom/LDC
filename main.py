@@ -126,6 +126,7 @@ def validate_one_epoch(epoch, dataloader, model, device, output_dir, arg=None):
 
 
 def test(checkpoint_path, dataloader, model, device, output_dir, args):
+    checkpoint_path = 'checkpoints\\BRIND\\11\\11_model.pth'
     if not os.path.isfile(checkpoint_path):
         raise FileNotFoundError(
             f"Checkpoint filte note found: {checkpoint_path}")
